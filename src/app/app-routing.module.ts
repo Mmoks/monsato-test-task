@@ -7,10 +7,6 @@ const routes: Routes = [
     redirectTo: '/users/dashboard',
     pathMatch: 'full',
   },
-  {
-    path: 'users',
-    loadChildren: './features/users/users.module#UsersModule',
-  },
 ];
 
 @NgModule({
