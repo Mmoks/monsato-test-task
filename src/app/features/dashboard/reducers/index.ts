@@ -10,14 +10,14 @@ export interface State {
 }
 
 export const reducerToken = new InjectionToken<ActionReducerMap<State>>(
-  'UsersReducers'
+  'DashboardReducers'
 );
 
 export const reducers: ActionReducerMap<State> = {
   dashboard: dashboardReducer,
 };
 
-export const getFeatureState = createFeatureSelector<State>('users');
+export const getFeatureState = createFeatureSelector<State>('dashboard');
 
 export function getReducers() {
   return reducers;

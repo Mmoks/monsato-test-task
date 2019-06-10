@@ -1,41 +1,135 @@
-<mat-card style="box-shadow: none;">
+<mat-card
+  *ngIf="{
+    types: types$ | async,
+    selectedType: selectedType$ | async,
+    selectedFile: selectedFile$ | async,
+    sourceFields: sourceFields$ | async,
+    templateFields: templateFields$ | async
+  } as data"
+>
   <mat-grid-list cols="2" rowHeight="5:2">
     <mat-grid-tile class="section__devider"
-      ><mat-card style="box-shadow: none;">
+      ><mat-card>
         <div style="display: flex; flex-direction: row;">
           <div style="margin-top: 10%; margin-right: 25px">Select type</div>
           <mat-form-field>
             <mat-label>Type</mat-label>
             <mat-select>
-              <mat-option [value]="'test'">
-                Lanes
-              </mat-option>
-              <mat-option [value]="'test'">
-                Jobs
+              <mat-option
+                (click)="selectFileType(type)"
+                [value]="type"
+                *ngFor="let type of data.types; trackBy: trackControl"
+              >
+                {{ type.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <mat-card-actions style="display: flex; flex-direction: row-reverse;">
-          <button mat-raised-button>Download Template</button></mat-card-actions
+          <button
+            mat-raised-button
+            (click)="createCsv(data.selectedType.fields)"
+            [disabled]="!data.selectedType"
+          >
+            Download Template
+          </button></mat-card-actions
         ></mat-card
       ></mat-grid-tile
     >
     <mat-grid-tile>
-      <mat-card style="box-shadow: none; display:  flex; flex-direction: column"
-        ><input type="file" />
+      <mat-card style=" display:  flex; flex-direction: column"
+        ><input
+          #csvLoader
+          type="file"
+          (input)="uploadCsv()"
+          [disabled]="!data.selectedType"
+        />
         <p>Allowed file extension(s): <strong>.csv</strong></p></mat-card
       ></mat-grid-tile
     >
   </mat-grid-list>
 
-  <mat-card style="box-shadow: none; display:  flex; flex-direction: column;">
-    <div style="background-color: #1414dc99">
+  <mat-card style=" display:  flex; flex-direction: column;">
+    <div [style.background-color]="data.selectedFile ? '#1414dc99' : 'grey'">
       <p style="text-align: center; color: white;">
         <strong>Map Fields</strong>
       </p>
     </div></mat-card
   >
-  <mat-card style="box-shadow: none; display:  flex; flex-direction: column;">
+  <mat-card style="display:  flex; flex-direction: column;">
+    <div
+      style="background-color: #ccc;
+    padding: 10px;
+    position: absolute;
+    width: 157px;
+    left: 20%;
+    text-align: center;
+    padding-right: 32px;
+    padding-left: 32px;
+
+"
+    >
+      <span> Source field name </span>
+    </div>
+    <div
+      style="background-color: #ccc;
+    padding: 10px;
+    position: absolute;
+    width: 157px;
+    right: 20%;
+    text-align: center;
+    padding-right: 32px;
+    padding-left: 32px;
+
+"
+    >
+      <span> Target field name </span>
+    </div>
   </mat-card>
+  <mat-card
+    class="mat-card"
+    style="
+    display: flex;
+    flex-direction: row;
+    top: 55px;
+    background-color: #ececec;
+    justify-content: space-around;
+"
+  >
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let field of data.sourceFields" [value]="field">
+          {{ field }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let field of data.templateFields" [value]="field">
+          {{ field }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      class="mat-raised-button"
+      style="
+            max-height: 36px;
+            position: absolute;
+            right: 6%;
+            top: 30%;
+          "
+    >
+      Add
+    </button>
+  </mat-card>
+  <mat-card-actions
+    style="padding-top: 80px; display: flex; justify-content: center;"
+  >
+    <button mat-raised-button (click)="cancel()">
+      Cancel
+    </button></mat-card-actions
+  >
 </mat-card>

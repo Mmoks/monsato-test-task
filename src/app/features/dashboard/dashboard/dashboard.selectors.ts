@@ -1,20 +1,9 @@
 import { getFeatureState } from '../reducers';
 import { createSelector } from '@ngrx/store';
-import { usersAdapter } from './dashboard.reducer';
 
 export const getDashboardState = createSelector(
   getFeatureState,
   state => state.dashboard
-);
-
-export const getUsersEntitiesState = createSelector(
-  getDashboardState,
-  state => state.users
-);
-
-export const getUsersMeta = createSelector(
-  getDashboardState,
-  state => state.meta
 );
 
 export const getLoading = createSelector(
@@ -22,9 +11,27 @@ export const getLoading = createSelector(
   state => state.loading
 );
 
-export const {
-  selectIds: getUsersIds,
-  selectEntities: getUsersEntities,
-  selectAll: getAllUsers,
-  selectTotal: getTotalUsers,
-} = usersAdapter.getSelectors(getUsersEntitiesState);
+export const getTypes = createSelector(
+  getDashboardState,
+  state => state.types
+);
+
+export const getSelectedType = createSelector(
+  getDashboardState,
+  state => state.selectedFileType
+);
+
+export const getSelectedFile = createSelector(
+  getDashboardState,
+  state => state.selectedFile
+);
+
+export const getSourceFields = createSelector(
+  getDashboardState,
+  state => state.sourceFields
+);
+
+export const getTemplateFields = createSelector(
+  getDashboardState,
+  state => (state.selectedFileType ? state.selectedFileType.fields : [])
+);

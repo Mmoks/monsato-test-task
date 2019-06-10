@@ -17,13 +17,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatIconModule } from '@angular/material/icon';
+import { NgrxFormsModule } from 'ngrx-forms';
+import { MatInputModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
     EffectsModule.forFeature([DashboardEffects]),
-    StoreModule.forFeature('users', reducerToken),
+    StoreModule.forFeature('dashboard', reducerToken),
     MatTableModule,
     MatListModule,
     MatPaginatorModule,
@@ -35,6 +37,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatDividerModule,
     MaterialFileInputModule,
     MatIconModule,
+    NgrxFormsModule,
+    MatInputModule,
   ],
   exports: [],
   providers: [reducerProvider],
