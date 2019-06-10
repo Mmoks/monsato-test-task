@@ -1,26 +1,10 @@
-import { Action } from '@ngrx/store';
-import { APIResponse, User } from '../../shared';
+import { createAction, props } from '@ngrx/store';
 
 export enum DashboardActionTypes {
-  LoadUsers = '[Dashboard] LoadUsers',
-  UsersLoaded = '[Dashboard] UsersLoaded',
-  LoadFail = '[Dashboard] LoadFail',
+  UploadFile = '[Dashboard] UploadFile',
 }
 
-export class LoadUsers implements Action {
-  readonly type = DashboardActionTypes.LoadUsers;
-  constructor(public payload: number) {}
-}
-
-export class UsersLoaded implements Action {
-  readonly type = DashboardActionTypes.UsersLoaded;
-
-  constructor(public payload: APIResponse<User[]>) {}
-}
-
-export class LoadFail implements Action {
-  readonly type = DashboardActionTypes.LoadFail;
-
-  constructor(public payload: any) {}
-}
-export type DashboardActions = LoadUsers | UsersLoaded | LoadFail;
+export const uploadFile = createAction(
+  DashboardActionTypes.UploadFile,
+  props<{ file: File }>()
+);

@@ -35,34 +35,7 @@ const initialState: DashboardState = {
 
 export function dashboardReducer(
   state = initialState,
-  action: dashboardActions.DashboardActions
+  action: any
 ): DashboardState {
-  switch (action.type) {
-    case dashboardActions.DashboardActionTypes.LoadUsers: {
-      return {
-        ...state,
-        loading: true,
-      };
-    }
-
-    case dashboardActions.DashboardActionTypes.UsersLoaded: {
-      const { page, per_page, total, total_pages } = action.payload;
-
-      return {
-        ...state,
-        users: usersAdapter.addAll(action.payload.data, state.users),
-        meta: {
-          page,
-          per_page,
-          total,
-          total_pages,
-        },
-        loading: false,
-      };
-    }
-
-    default: {
-      return state;
-    }
-  }
+  return null;
 }

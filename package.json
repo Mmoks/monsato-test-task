@@ -27,6 +27,7 @@
     "@ngrx/store": "^8.0.0",
     "core-js": "^2.5.4",
     "ngx-cacheable": "^1.1.6",
+    "ngx-material-file-input": "^1.1.1",
     "rxjs": "~6.5.2",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

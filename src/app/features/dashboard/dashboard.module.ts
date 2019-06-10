@@ -12,6 +12,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDividerModule } from '@angular/material/divider';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -25,9 +30,14 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatProgressSpinnerModule,
     MatButtonModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatDividerModule,
+    MaterialFileInputModule,
+    MatIconModule,
   ],
   exports: [],
   providers: [reducerProvider],
   declarations: [DashboardComponent],
 })
-export class UsersModule {}
+export class DashboardModule {}

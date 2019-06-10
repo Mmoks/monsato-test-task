@@ -1,5 +1,41 @@
-<app-users-list
-  [meta]="meta$ | async"
-  [users]="users$ | async"
-  (loadUsersHandler)="loadUsers($event)"
-></app-users-list>
+<mat-card style="box-shadow: none;">
+  <mat-grid-list cols="2" rowHeight="5:2">
+    <mat-grid-tile class="section__devider"
+      ><mat-card style="box-shadow: none;">
+        <div style="display: flex; flex-direction: row;">
+          <div style="margin-top: 10%; margin-right: 25px">Select type</div>
+          <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select>
+              <mat-option [value]="'test'">
+                Lanes
+              </mat-option>
+              <mat-option [value]="'test'">
+                Jobs
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <mat-card-actions style="display: flex; flex-direction: row-reverse;">
+          <button mat-raised-button>Download Template</button></mat-card-actions
+        ></mat-card
+      ></mat-grid-tile
+    >
+    <mat-grid-tile>
+      <mat-card style="box-shadow: none; display:  flex; flex-direction: column"
+        ><input type="file" />
+        <p>Allowed file extension(s): <strong>.csv</strong></p></mat-card
+      ></mat-grid-tile
+    >
+  </mat-grid-list>
+
+  <mat-card style="box-shadow: none; display:  flex; flex-direction: column;">
+    <div style="background-color: #1414dc99">
+      <p style="text-align: center; color: white;">
+        <strong>Map Fields</strong>
+      </p>
+    </div></mat-card
+  >
+  <mat-card style="box-shadow: none; display:  flex; flex-direction: column;">
+  </mat-card>
+</mat-card>
